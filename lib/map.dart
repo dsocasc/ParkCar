@@ -43,10 +43,49 @@ class Map extends StatefulWidget {
 }
 
 class NewMap extends State<Map> {
+  MapController mapController = MapController();
+  LatLng center = LatLng(43.3713500, -8.3960000);
+  double zoom = 14.5;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('MAPA'),
+      ),
+      body: FlutterMap(
+        mapController: mapController,
+        options: MapOptions(
+          center: center,
+          zoom: zoom,
+        ),
+        children: [
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            userAgentPackageName: 'com.example.app',
+          ),
+          ElevatedButton(
+            child: const Text('Go back'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyApp()),
+              );
+            },
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.gps_fixed),
+        onPressed: () {
+          mapController.move(LatLng(43.33299391315873, -8.410923367239457), 17);
+          setState(() {
+            center = LatLng(40.7128, -74.0060);
+            zoom = 17;
+          });
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         appBar: AppBar(
             leading: ElevatedButton(
               child: const Icon(Icons.arrow_left,size: 50,),
@@ -120,5 +159,4 @@ class NewMap extends State<Map> {
     ,
     );
   }
-
 }
