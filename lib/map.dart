@@ -67,7 +67,10 @@ class NewMap extends State<Map> {
             ElevatedButton(
               child: const Text('Go back'),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyApp()),
+                );
               },
             ),
           ],
