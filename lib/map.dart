@@ -3,7 +3,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 import 'main.dart';
-import 'package:parkcar/main.dart';
 
 class MapPage extends StatelessWidget {
 
@@ -49,10 +48,16 @@ class NewMap extends State<Map> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: const Text('MAPA'),
-          //title: Text(widget.title),
+            leading: ElevatedButton(
+              child: const Icon(Icons.arrow_left,size: 50,),
+              onPressed: () {
+                Navigator.push(
+                  context,
+
+                  MaterialPageRoute(builder: (context) => const MyApp()),
+                );
+              },
+            )
         ),
 
         body: FlutterMap(
@@ -65,12 +70,16 @@ class NewMap extends State<Map> {
               polygonCulling: false,
               polygons: [
                 Polygon(
-                  points: [LatLng(43.3713500, -8.3960000), LatLng(43.3713500, -8.3965000), LatLng(43.3723500, -8.3970000),],
-                  //borderStrokeWidth: 10,
-                  color: Colors.red,
-                  disableHolesBorder: false,
+                  points: [LatLng(43.352013, -8.406989), LatLng(43.357186, -8.405929), LatLng(43.357519, -8.407758),LatLng(43.354900, -8.411033)],
+                  borderStrokeWidth: 2,
+                  color: const Color(0x6000FF00),
+                  disableHolesBorder: true,
+
+                  isFilled: true,
+                  borderColor: const Color(0xA0000000),
                 ),
               ],
+
             ),
           ],
           children: [
@@ -80,7 +89,7 @@ class NewMap extends State<Map> {
               userAgentPackageName: 'com.example.app',
             ),
 
-            ElevatedButton(
+            /*ElevatedButton(
               child: const Text('Go back'),
               onPressed: () {
                 Navigator.push(
@@ -88,7 +97,7 @@ class NewMap extends State<Map> {
                   MaterialPageRoute(builder: (context) => const MyApp()),
                 );
               },
-            ),
+            ),*/
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
