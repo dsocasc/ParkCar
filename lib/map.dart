@@ -50,15 +50,41 @@ class NewMap extends State<Map> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('MAPA'),
-      ),
+        appBar: AppBar(
+            leading: ElevatedButton(
+            child: const Icon(Icons.arrow_left,size: 50,),
+            onPressed: () {
+                Navigator.push(
+                context,
+
+                MaterialPageRoute(builder: (context) => const MyApp()),
+                );
+              },
+            )
+        ),
       body: FlutterMap(
         mapController: mapController,
         options: MapOptions(
           center: center,
           zoom: zoom,
         ),
+        nonRotatedChildren: [
+          PolygonLayer(
+            polygonCulling: false,
+            polygons: [
+              Polygon(
+                points: [LatLng(43.352013, -8.406989), LatLng(43.357186, -8.405929), LatLng(43.357519, -8.407758),LatLng(43.354900, -8.411033)],
+                borderStrokeWidth: 2,
+                color: const Color(0x6000FF00),
+                disableHolesBorder: true,
+
+                isFilled: true,
+                borderColor: const Color(0xA0000000),
+              ),
+            ],
+
+          ),
+        ],
         children: [
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -85,78 +111,7 @@ class NewMap extends State<Map> {
           });
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        appBar: AppBar(
-            leading: ElevatedButton(
-              child: const Icon(Icons.arrow_left,size: 50,),
-              onPressed: () {
-                Navigator.push(
-                  context,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,);
 
-                  MaterialPageRoute(builder: (context) => const MyApp()),
-                );
-              },
-            )
-        ),
-
-        body: FlutterMap(
-          options: MapOptions(
-            center: LatLng(43.3713500, -8.3960000),
-            zoom: 14,
-          ),
-          nonRotatedChildren: [
-            PolygonLayer(
-              polygonCulling: false,
-              polygons: [
-                Polygon(
-                  points: [LatLng(43.352013, -8.406989), LatLng(43.357186, -8.405929), LatLng(43.357519, -8.407758),LatLng(43.354900, -8.411033)],
-                  borderStrokeWidth: 2,
-                  color: const Color(0x6000FF00),
-                  disableHolesBorder: true,
-
-                  isFilled: true,
-                  borderColor: const Color(0xA0000000),
-                ),
-              ],
-
-            ),
-          ],
-          children: [
-
-            TileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-              userAgentPackageName: 'com.example.app',
-            ),
-
-            /*ElevatedButton(
-              child: const Text('Go back'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyApp()),
-                );
-              },
-            ),*/
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.call),
-              label: ''
-              'call',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.camera),
-              label: 'Calls',
-          ),
-          BottomNavigationBarItem(
-    icon: Icon(Icons.chat),
-    label: 'Calls',
-    ),
-    ],
-    )
-    ,
-    );
   }
 }
