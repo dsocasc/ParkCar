@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:location/location.dart';
 
 import 'main.dart';
 
@@ -42,7 +41,6 @@ class Map extends StatefulWidget {
 
 
 }
-
 
 class NewMap extends State<Map> {
 
@@ -99,4 +97,3 @@ class NewMap extends State<Map> {
   }
 
 }
-

@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ParkCar',
+      title: 'AppParkCar',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'ParkCar HomePage'),
+      home: const MyHomePage(title: 'AppParkCar'),
     );
   }
 }
@@ -53,16 +53,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-              const IconButton(
-                iconsize: 50,
-                color: Colors.black,
-                onPressed: () {
-
-
-                },
-
-                  icon: Icon(Icons.map_outlined,
-                  ),
+            ElevatedButton(
+              child: const Icon(Icons.map_outlined),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MapPage()),
+                );
+              },
+            ),
           ],
         ),
       ),
