@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ParkCar',
+      title: 'AppParkCar',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'ParkCar HomePage'),
+      home: const MyHomePage(title: 'AppParkCar'),
     );
   }
 }
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-          title: const Text('ParkCar Homepage'),
+          title: const Center (child: Text('AppParkCar'),)
         //title: Text(widget.title),
       ),
 

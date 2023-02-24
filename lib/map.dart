@@ -24,7 +24,7 @@ class MapPage extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const Map(title: 'ParkCar HomePage'),
+      home: const Map(title: 'AppParkCar'),
     );
   }
 
