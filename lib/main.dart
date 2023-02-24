@@ -127,14 +127,6 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'HOLA',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
 
             ElevatedButton(
               child: const Text('Open route'),
