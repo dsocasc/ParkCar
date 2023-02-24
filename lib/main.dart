@@ -57,7 +57,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+ // int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+     // _counter++;
     });
   }
 
@@ -111,6 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              'HOLA',
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
 
             ElevatedButton(
               child: const Text('Open route'),
