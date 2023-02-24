@@ -53,14 +53,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              child: const Icon(Icons.map_outlined),
-              onPressed: () {
-                Navigator.push(
+            SizedBox(
+                width: 200, // <-- Your width
+                height: 200, // <-- Your height
+
+                child: ElevatedButton(
+                 child: const Icon(Icons.map_outlined,size: 100,),
+                  onPressed: () {
+                   Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const MapPage()),
                 );
-              },
+                },
+              )
             ),
           ],
         ),
