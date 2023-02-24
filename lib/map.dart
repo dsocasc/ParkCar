@@ -48,12 +48,6 @@ class NewMap extends State<Map>{
         center: LatLng(43.3713500,  -8.3960000),
         zoom: 14.5,
       ),
-      nonRotatedChildren: [
-        AttributionWidget.defaultWidget(
-          source: 'OpenStreetMap contributors',
-          onSourceTapped: null,
-        ),
-      ],
       children: [
         TileLayer(
           urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
