@@ -85,23 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text('Boton de prueba'),
         //title: Text(widget.title),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.call),
-              label: ''
-                  'call',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: 'Calls',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Calls',
-          ),
-        ],
-    ),
+
       body: Center(
         //children: [
           //Text('HOLA'),

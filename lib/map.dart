@@ -4,9 +4,10 @@ import 'package:latlong2/latlong.dart';
 import 'package:parkcar/main.dart';
 import 'package:geolocator/geolocator.dart';
 
-class MapPage extends StatelessWidget{
+class MapPage extends StatelessWidget {
 
   const MapPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,9 +30,10 @@ class MapPage extends StatelessWidget{
 
 }
 
-class Map extends StatefulWidget{
+class Map extends StatefulWidget {
 
-  const Map ({super.key, required this.title});
+  const Map({super.key, required this.title});
+
   final String title;
 
   @override
@@ -40,36 +42,54 @@ class Map extends StatefulWidget{
 
 }
 
-class NewMap extends State<Map>{
+class NewMap extends State<Map> {
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(
-      // Here we take the value from the MyHomePage object that was created by
-      // the App.build method, and use it to set our appbar title.
-      title: const Text('MAPA'),
-      //title: Text(widget.title),
-    ),
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: const Text('MAPA'),
+          //title: Text(widget.title),
+        ),
 
-    body: FlutterMap(
-      options: MapOptions(
-        center: LatLng(43.3713500,  -8.3960000),
-        zoom: 14.5,
-      ),
-      children: [
-        TileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-          userAgentPackageName: 'com.example.app',
+        body: FlutterMap(
+          options: MapOptions(
+            center: LatLng(43.3713500, -8.3960000),
+            zoom: 14.5,
+          ),
+          children: [
+            TileLayer(
+              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              userAgentPackageName: 'com.example.app',
+            ),
+            ElevatedButton(
+              child: const Text('Go back'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
         ),
-        ElevatedButton(
-          child: const Text('Go back'),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ],
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.call),
+              label: ''
+              'call',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.camera),
+              label: 'Calls',
+          ),
+          BottomNavigationBarItem(
+    icon: Icon(Icons.chat),
+    label: 'Calls',
+    ),
+    ],
     )
+    ,
     );
   }
 
