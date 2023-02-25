@@ -84,6 +84,11 @@ class NewMap extends State<Map> {
         ),
         children: [
 
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            userAgentPackageName: 'com.example.app',
+          ),
+
           PolygonLayer(
             polygonCulling: false,
             polygons: [
@@ -101,10 +106,7 @@ class NewMap extends State<Map> {
             ],
 
           ),
-          TileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            userAgentPackageName: 'com.example.app',
-          ),
+
 
           MarkerLayer(
             markers: markers,
