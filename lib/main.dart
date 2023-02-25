@@ -31,21 +31,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.car_rental_rounded,
-                        size: 50,
-                        color: Colors.black,),
-          title: const Center (child: Text('AppParkCar'),)
-      ),
+          leading: const Icon(
+            Icons.car_rental_rounded,
+            size: 50,
+            color: Colors.black,
+          ),
+          title: const Center(
+            child: Text('AppParkCar'),
+          )),
 
       body: Center(
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
@@ -53,19 +53,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 200, // <-- Your height
 
                 child: ElevatedButton(
-                 child: const Icon(Icons.map_outlined,size: 100,),
+                  child: const Icon(
+                    Icons.map_outlined,
+                    size: 100,
+                  ),
                   onPressed: () {
-                   Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MapPage()),
-                );
-                },
-              )
-            ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MapPage()),
+                    );
+                  },
+                )),
           ],
         ),
       ),
-       // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

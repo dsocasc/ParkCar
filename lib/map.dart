@@ -5,7 +5,6 @@ import 'package:latlong2/latlong.dart';
 import 'main.dart';
 
 class MapPage extends StatelessWidget {
-
   const MapPage({super.key});
 
   @override
@@ -18,18 +17,15 @@ class MapPage extends StatelessWidget {
       home: const Map(title: 'AppParkCar'),
     );
   }
-
 }
 
 class Map extends StatefulWidget {
-
   const Map({super.key, required this.title});
 
   final String title;
 
   @override
   State<StatefulWidget> createState() => NewMap();
-
 }
 
 class NewMap extends State<Map> {
@@ -43,109 +39,115 @@ class NewMap extends State<Map> {
       height: 50.0,
       point: LatLng(43.33299391315873, -8.410923367239457),
       builder: (ctx) =>
-      const Icon(Icons.location_on, color: Colors.blue, size: 40),
+          const Icon(Icons.location_on, color: Colors.blue, size: 40),
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            leading: ElevatedButton(
-            child: const Icon(Icons.arrow_left,size: 60,),
-            onPressed: () {
-                Navigator.push(
-                context,
-
-                MaterialPageRoute(builder: (context) => const MyApp()),
-                );
-              },
-            )
+      appBar: AppBar(
+          leading: ElevatedButton(
+        child: const Icon(
+          Icons.arrow_left,
+          size: 60,
         ),
-      body:
-      Stack(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MyApp()),
+          );
+        },
+      )),
+      body: Stack(
         children: [
-        FlutterMap(
-        mapController: mapController,
-        options: MapOptions(
-          center: center,
-          zoom: zoom,
-        ),
-        children: [
-
-          TileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            userAgentPackageName: 'com.example.app',
-          ),
-
-          PolygonLayer(
-            polygonCulling: false,
-            polygons: [
-              Polygon(
-                points: [LatLng(43.352013, -8.406989), LatLng(43.357186, -8.405929), LatLng(43.357519, -8.407758),LatLng(43.354900, -8.411033)],
-                borderStrokeWidth: 2,
-                color: const Color(0x6000FF00),
-                disableHolesBorder: true,
-                isFilled: true,
-                borderColor: const Color(0xA0000000),
+          FlutterMap(
+            mapController: mapController,
+            options: MapOptions(
+              center: center,
+              zoom: zoom,
+            ),
+            children: [
+              TileLayer(
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                userAgentPackageName: 'com.example.app',
               ),
-
+              PolygonLayer(
+                polygonCulling: false,
+                polygons: [
+                  Polygon(
+                    points: [
+                      LatLng(43.352013, -8.406989),
+                      LatLng(43.357186, -8.405929),
+                      LatLng(43.357519, -8.407758),
+                      LatLng(43.354900, -8.411033)
+                    ],
+                    borderStrokeWidth: 2,
+                    color: const Color(0x6000FF00),
+                    disableHolesBorder: true,
+                    isFilled: true,
+                    borderColor: const Color(0xA0000000),
+                  ),
+                ],
+              ),
+              MarkerLayer(
+                markers: markers,
+              )
             ],
-
           ),
-
-
-          MarkerLayer(
-            markers: markers,
-          )
-        ],
-      ),
-
-      const Positioned(
-        top: 0,
-        right: 0,
-        child: Text(
-          'Verde = Libre         ',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.green),
-        ),
-      ),
-
+          const Positioned(
+            top: 0,
+            right: 0,
+            child: Text(
+              'Verde = Libre         ',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green),
+            ),
+          ),
           const Positioned(
             top: 22,
             right: 0,
             child: Text(
               'Azul = Casi vacio     ',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueAccent),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueAccent),
             ),
           ),
-
           const Positioned(
             top: 44,
             right: 0,
             child: Text(
               'Amarillo = Medio lleno',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.yellow),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow),
             ),
           ),
-
           const Positioned(
             top: 66,
             right: 0,
             child: Text(
               'Morado = Casi lleno   ',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.purple),
             ),
           ),
-
           const Positioned(
             top: 88,
             right: 0,
             child: Text(
               'Rojo = Lleno          ',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
             ),
           ),
-
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -158,7 +160,7 @@ class NewMap extends State<Map> {
           });
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,);
-
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+    );
   }
 }
