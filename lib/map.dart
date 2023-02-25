@@ -277,7 +277,7 @@ class NewMap extends State<Map> {
                                       hoverColor: Colors.green.withOpacity(0.5),
                                       splashRadius: 15,
                                       onPressed: () {
-                                          calificacion(1, inside);
+                                          calificacion(0.5, inside);
                                           Navigator.pop(context);
                                       },
                                       icon: const Icon(
@@ -291,7 +291,7 @@ class NewMap extends State<Map> {
                                       hoverColor: Colors.blueAccent.withOpacity(0.5),
                                       splashRadius: 15,
                                       onPressed: () {
-                                        calificacion(2, inside);
+                                        calificacion(1.5, inside);
                                         Navigator.pop(context);
                                       },
                                       icon: const Icon(
@@ -304,7 +304,7 @@ class NewMap extends State<Map> {
                                     IconButton(
                                       hoverColor: Colors.yellowAccent.withOpacity(0.5),
                                       onPressed: () {
-                                        calificacion(3, inside);
+                                        calificacion(2.5, inside);
                                         Navigator.pop(context);
                                       },
                                       splashRadius: 15,
@@ -318,7 +318,7 @@ class NewMap extends State<Map> {
                                     IconButton(
                                       hoverColor: Colors.purple.withOpacity(0.5),
                                       onPressed: () {
-                                        calificacion(4, inside);
+                                        calificacion(3.5, inside);
                                         Navigator.pop(context);
                                       },
                                       splashRadius: 15,
@@ -331,7 +331,7 @@ class NewMap extends State<Map> {
                                     Spacer(),
                                     IconButton(
                                       onPressed: () {
-                                        calificacion(5, inside);
+                                        calificacion(4.5, inside);
                                         Navigator.pop(context);
                                       },
                                       hoverColor: Colors.red.withOpacity(0.5),
