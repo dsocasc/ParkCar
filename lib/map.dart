@@ -1,3 +1,6 @@
+import 'dart:collection';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -40,10 +43,11 @@ class Colores {
 }
 
 class Estados {
-  Estados({required this.texto, required this.value, required this.color, required this.time});
+  Estados({required this.texto, required this.value, required this.color, required this.time, required this.colorBorder});
   final String texto;
   double value;
   Color color;
+  Color colorBorder;
   DateTime time;
 }
 
@@ -68,7 +72,7 @@ class NewMap extends State<Map> {
         LatLng(43.357519, -8.407758),
         LatLng(43.354900, -8.411033)
       ],
-      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now(), colorBorder: Colors.black),
     ),
     Area(
       name: "cc",
@@ -78,7 +82,7 @@ class NewMap extends State<Map> {
         LatLng(43.351674, -8.403607),
         LatLng(43.355533, -8.401042),
       ],
-      estado: Estados(texto: 'NaN',value: 0, color: Colores.gris,time: DateTime.now()),
+      estado: Estados(texto: 'NaN',value: 0, color: Colores.gris,time: DateTime.now(), colorBorder: Colors.black),
     ),
     Area(
       name: "Universidad",
@@ -98,7 +102,7 @@ class NewMap extends State<Map> {
         LatLng(43.333440336159484, -8.408183155419103),
         LatLng(43.33430346144314, -8.409513538949213),
       ],
-      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now(), colorBorder: Colors.black),
     ),
     Area(
       name: "Coliseum",
@@ -114,7 +118,7 @@ class NewMap extends State<Map> {
         LatLng(43.34028382931498, -8.407321866045292),
         LatLng(43.340408676861486, -8.40915649698408),
       ],
-      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now(), colorBorder: Colors.black),
     ),
     Area(
       name: "As lagoas",
@@ -131,7 +135,7 @@ class NewMap extends State<Map> {
         LatLng(43.380480671827435, -8.407284472984491),
         LatLng(43.381691515571895, -8.408144338654548),
       ],
-      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now(), colorBorder: Colors.black),
     ),
     Area(
       name: "Monte Alto",
@@ -148,7 +152,7 @@ class NewMap extends State<Map> {
         LatLng(43.38169313297744, -8.400181288157677),
         LatLng(43.38125553172785, -8.404522715325253),
       ],
-      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now(), colorBorder: Colors.black),
     ),
     Area(
       name: "B Flores",
@@ -166,9 +170,20 @@ class NewMap extends State<Map> {
         LatLng(43.34644259004231, -8.400950376872409),
         LatLng(43.34692394957256, -8.401458364333099),
       ],
-      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now(), colorBorder: Colors.black),
     ),
   ];
+
+  LatLng centerPoint (Area a){
+    double sumLat = 0;
+    double sumLong = 0;
+    for (LatLng l in a.points) {
+      sumLat += l.latitude;
+      sumLong += l.longitude;
+  }
+    return LatLng(sumLat/a.points.length, sumLong/a.points.length);
+
+  }
 
   Point latLngToPoint(LatLng latlng) {
     return Point(x: latlng.latitude, y: latlng.longitude);
@@ -277,7 +292,7 @@ class NewMap extends State<Map> {
                                       hoverColor: Colors.green.withOpacity(0.5),
                                       splashRadius: 15,
                                       onPressed: () {
-                                          calificacion(0.5, inside);
+                                          calificacion(1, inside);
                                           Navigator.pop(context);
                                       },
                                       icon: const Icon(
@@ -291,7 +306,7 @@ class NewMap extends State<Map> {
                                       hoverColor: Colors.blueAccent.withOpacity(0.5),
                                       splashRadius: 15,
                                       onPressed: () {
-                                        calificacion(1.5, inside);
+                                        calificacion(2, inside);
                                         Navigator.pop(context);
                                       },
                                       icon: const Icon(
@@ -304,7 +319,7 @@ class NewMap extends State<Map> {
                                     IconButton(
                                       hoverColor: Colors.yellowAccent.withOpacity(0.5),
                                       onPressed: () {
-                                        calificacion(2.5, inside);
+                                        calificacion(3, inside);
                                         Navigator.pop(context);
                                       },
                                       splashRadius: 15,
@@ -318,7 +333,7 @@ class NewMap extends State<Map> {
                                     IconButton(
                                       hoverColor: Colors.purple.withOpacity(0.5),
                                       onPressed: () {
-                                        calificacion(3.5, inside);
+                                        calificacion(4, inside);
                                         Navigator.pop(context);
                                       },
                                       splashRadius: 15,
@@ -331,7 +346,7 @@ class NewMap extends State<Map> {
                                     Spacer(),
                                     IconButton(
                                       onPressed: () {
-                                        calificacion(4.5, inside);
+                                        calificacion(5, inside);
                                         Navigator.pop(context);
                                       },
                                       hoverColor: Colors.red.withOpacity(0.5),
@@ -364,9 +379,9 @@ class NewMap extends State<Map> {
                           points: a.points,
                           borderStrokeWidth: 2,
                           color: a.estado.color,
+                          borderColor: a.estado.colorBorder,
                           disableHolesBorder: true,
                           isFilled: true,
-                          borderColor: const Color(0xA0000000).withOpacity(0.5),
                         ),
                       ],
                     ))
@@ -530,5 +545,32 @@ class NewMap extends State<Map> {
         a.estado.color = Colores.rojo;
       });
     }
+
+  // Area cercana = areas.firstWhere((a) => a.name == nearestArea(LatLng(43.33299391315873, -8.410923367239457), areas).name);
+  //   setState(() {
+  //     cercana.estado.colorBorder = Colors.pink;
+  //   });
+
+  }
+
+  Area nearestArea(LatLng l, List<Area> a){
+
+    Area nearest = a[0];
+    double val = _distance(l, centerPoint(nearest));
+
+    for (var value in a) {
+      if (val < _distance(l, centerPoint(value))){
+        nearest = value;
+        val = _distance(l, centerPoint(value));
+      }
+    }
+
+    return nearest;
+  }
+
+  double _distance(LatLng p1, LatLng p2) {
+    double dx = p1.latitude - p2.latitude;
+    double dy = p1.longitude - p2.longitude;
+    return sqrt(dx * dx + dy * dy);
   }
 }
