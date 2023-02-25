@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -14,15 +13,6 @@ class MapPage extends StatelessWidget {
     return MaterialApp(
       title: 'Map',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: const Map(title: 'AppParkCar'),
@@ -39,7 +29,6 @@ class Map extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => NewMap();
-
 
 }
 
@@ -63,7 +52,7 @@ class NewMap extends State<Map> {
     return Scaffold(
         appBar: AppBar(
             leading: ElevatedButton(
-            child: const Icon(Icons.arrow_left,size: 50,),
+            child: const Icon(Icons.arrow_left,size: 60,),
             onPressed: () {
                 Navigator.push(
                 context,
@@ -97,8 +86,6 @@ class NewMap extends State<Map> {
                 borderStrokeWidth: 2,
                 color: const Color(0x6000FF00),
                 disableHolesBorder: true,
-
-
                 isFilled: true,
                 borderColor: const Color(0xA0000000),
               ),
@@ -113,6 +100,7 @@ class NewMap extends State<Map> {
           )
         ],
       ),
+
       const Positioned(
         top: 0,
         right: 0,
@@ -121,6 +109,7 @@ class NewMap extends State<Map> {
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.green),
         ),
       ),
+
           const Positioned(
             top: 22,
             right: 0,
@@ -129,6 +118,7 @@ class NewMap extends State<Map> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueAccent),
             ),
           ),
+
           const Positioned(
             top: 44,
             right: 0,
@@ -137,6 +127,7 @@ class NewMap extends State<Map> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.yellow),
             ),
           ),
+
           const Positioned(
             top: 66,
             right: 0,
@@ -145,6 +136,7 @@ class NewMap extends State<Map> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),
             ),
           ),
+
           const Positioned(
             top: 88,
             right: 0,
@@ -153,6 +145,7 @@ class NewMap extends State<Map> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
             ),
           ),
+
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -37,15 +37,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.car_crash,
+        leading: const Icon(Icons.car_rental_rounded,
                         size: 50,
                         color: Colors.black,),
-
-
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
           title: const Center (child: Text('AppParkCar'),)
-        //title: Text(widget.title),
       ),
 
       body: Center(
