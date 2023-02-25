@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:point_in_polygon/point_in_polygon.dart';
+import 'package:intl/intl.dart';
 
 import 'main.dart';
 
@@ -39,9 +40,10 @@ class Colores {
 }
 
 class Estados {
-  Estados({required this.texto, required this.color});
+  Estados({required this.texto, required this.color, required this.time});
   final String texto;
   Color color;
+  DateTime time;
 }
 
 class Area {
@@ -56,12 +58,12 @@ class NewMap extends State<Map> {
   LatLng center = LatLng(43.33356100440097, -8.409176083298943);
   double zoom = 13;
 
-  Estados completo = Estados(texto: 'Completo', color: Colores.rojo);
-  Estados pseudocompleto = Estados(texto: 'Casi lleno', color: Colores.granate);
-  Estados medio = Estados(texto: 'Medio lleno', color: Colores.amarillo);
-  Estados pseudovacio = Estados(texto: 'Casi vacío', color: Colores.azul);
-  Estados vacio = Estados(texto: 'Vacío', color: Colores.verde);
-  Estados sininfo = Estados(texto: 'NaN', color: Colores.gris);
+  Estados completo = Estados(texto: 'Completo', color: Colores.rojo, time: DateTime.now());
+  Estados pseudocompleto = Estados(texto: 'Casi lleno', color: Colores.granate, time: DateTime.now());
+  Estados medio = Estados(texto: 'Medio lleno', color: Colores.amarillo, time: DateTime.now());
+  Estados pseudovacio = Estados(texto: 'Casi vacío', color: Colores.azul, time: DateTime.now());
+  Estados vacio = Estados(texto: 'Vacío', color: Colores.verde, time: DateTime.now());
+  Estados sininfo = Estados(texto: 'NaN', color: Colores.gris, time: DateTime.now());
 
   var areas = [
     Area(
@@ -72,7 +74,7 @@ class NewMap extends State<Map> {
         LatLng(43.357519, -8.407758),
         LatLng(43.354900, -8.411033)
       ],
-      estado: Estados(texto: 'NaN', color: Colores.gris),
+      estado: Estados(texto: 'NaN', color: Colores.gris, time: DateTime.now()),
     ),
     Area(
       name: "cc",
@@ -82,7 +84,7 @@ class NewMap extends State<Map> {
         LatLng(43.351674, -8.403607),
         LatLng(43.355533, -8.401042),
       ],
-      estado: Estados(texto: 'NaN', color: Colores.gris),
+      estado: Estados(texto: 'NaN', color: Colores.gris, time: DateTime.now()),
     ),
   ];
 
@@ -94,6 +96,7 @@ class NewMap extends State<Map> {
     for (var area in areas) {
       if (Poly.isPointInPolygon(latLngToPoint(point),
           area.points.map((p) => latLngToPoint(p)).toList())) {
+        area.estado.time = DateTime.now();
         return area;
       }
     }
@@ -163,7 +166,7 @@ class NewMap extends State<Map> {
                                       ),
                                     ),
                                     Text(
-                                      inside.name,
+                                      inside.name+ DateFormat('yyyy-MM-dd kk:mm').format(inside.estado.time),
                                       style: const TextStyle(
                                         fontSize: 30,
                                       ),
