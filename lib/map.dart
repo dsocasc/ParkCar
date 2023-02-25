@@ -104,11 +104,11 @@ class NewMap extends State<Map> {
 
   List<Marker> markers = [
     Marker(
-      width: 50.0,
-      height: 50.0,
+      width: 30.0,
+      height: 30.0,
       point: LatLng(43.33299391315873, -8.410923367239457),
       builder: (ctx) =>
-          const Icon(Icons.location_on, color: Colors.blue, size: 40),
+          const Icon(Icons.my_location_outlined, color: Colors.blue, size: 20),
     ),
   ];
 
@@ -143,6 +143,7 @@ class NewMap extends State<Map> {
                     builder: (context) {
                       return Dialog(
                         child: Container(
+                          padding: EdgeInsets.all(16.0),
                           height: MediaQuery.of(context).size.height * 0.3,
                           width: MediaQuery.of(context).size.width * 0.2,
                           decoration: BoxDecoration(
@@ -154,22 +155,34 @@ class NewMap extends State<Map> {
                           child: Column(
                             children: [
                               Expanded(
-                                child: Row(
+                                child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Spacer(),
-                                    const Text(
-                                      'Area: ',
-                                      style: TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
+                                    Text(
+                                      DateFormat('yyyy-MM-dd kk:mm').format(inside.estado.time),
+                                      style: const TextStyle(
+                                        fontSize: 15,
                                       ),
                                     ),
-                                    Text(
-                                      inside.name+ DateFormat('yyyy-MM-dd kk:mm').format(inside.estado.time),
-                                      style: const TextStyle(
-                                        fontSize: 30,
-                                      ),
+                                    Spacer(),
+                                    Align(
+                                      alignment: Alignment.center,
+                                        child: Row( children: [
+                                            const Text(
+                                              'Area: ',
+                                              style: TextStyle(
+                                                fontSize: 30,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              inside.name,
+                                              style: const TextStyle(
+                                                fontSize: 30,
+                                              ),
+                                            ),
+                                          ]
+                                        ),
                                     ),
                                     Spacer(),
                                   ],
@@ -178,9 +191,10 @@ class NewMap extends State<Map> {
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     IconButton(
+                                      hoverColor: Colors.green.withOpacity(0.5),
+                                      splashRadius: 15,
                                       onPressed: () => calificacion(1, inside),
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
@@ -190,6 +204,8 @@ class NewMap extends State<Map> {
                                     ),
                                     Spacer(),
                                     IconButton(
+                                      hoverColor: Colors.blueAccent.withOpacity(0.5),
+                                      splashRadius: 15,
                                       onPressed: () => calificacion(2, inside),
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
@@ -199,16 +215,20 @@ class NewMap extends State<Map> {
                                     ),
                                     Spacer(),
                                     IconButton(
+                                      hoverColor: Colors.yellowAccent.withOpacity(0.5),
                                       onPressed: () => calificacion(3, inside),
+                                      splashRadius: 15,
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
-                                        color: Colors.yellow,
+                                        color: Colors.yellowAccent,
                                         size: 30,
                                       ),
                                     ),
                                     Spacer(),
                                     IconButton(
+                                      hoverColor: Colors.purple.withOpacity(0.5),
                                       onPressed: () => calificacion(4, inside),
+                                      splashRadius: 15,
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
                                         color: Colors.purple,
@@ -218,6 +238,8 @@ class NewMap extends State<Map> {
                                     Spacer(),
                                     IconButton(
                                       onPressed: () => calificacion(5, inside),
+                                      hoverColor: Colors.red.withOpacity(0.5),
+                                      splashRadius: 15,
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
                                         color: Colors.red,
