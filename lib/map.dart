@@ -235,58 +235,53 @@ class NewMap extends State<Map> {
               )
             ],
           ),
-          const Positioned(
+          Positioned(
             top: 0,
             right: 0,
-            child: Text(
-              'Verde = Libre         ',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green),
+            child: Container(
+            width: 200,
+            height: 120,
+            alignment: AlignmentDirectional.topEnd,
+            color: Colors.white.withOpacity(0.8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: const [
+                Text(
+                    'Verde = Libre         ',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green),
+                  ),
+               Text(
+                    'Azul = Casi vacio     ',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueAccent),
+                  ),
+                Text(
+                    'Amarillo = Medio lleno',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.yellow),
+                  ),
+                Text(
+                    'Morado = Casi lleno   ',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.purple),
+                  ),
+                Text(
+                    'Rojo = Lleno          ',
+                    style: TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+                  ),
+              ],
             ),
           ),
-          const Positioned(
-            top: 22,
-            right: 0,
-            child: Text(
-              'Azul = Casi vacio     ',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent),
-            ),
-          ),
-          const Positioned(
-            top: 44,
-            right: 0,
-            child: Text(
-              'Amarillo = Medio lleno',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow),
-            ),
-          ),
-          const Positioned(
-            top: 66,
-            right: 0,
-            child: Text(
-              'Morado = Casi lleno   ',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.purple),
-            ),
-          ),
-          const Positioned(
-            top: 88,
-            right: 0,
-            child: Text(
-              'Rojo = Lleno          ',
-              style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
-            ),
           ),
         ],
       ),
