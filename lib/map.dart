@@ -226,7 +226,7 @@ class NewMap extends State<Map> {
                         child: Container(
                           padding: const EdgeInsets.all(16.0),
                           height: MediaQuery.of(context).size.height * 0.3,
-                          width: MediaQuery.of(context).size.width * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: inside.estado.color,
