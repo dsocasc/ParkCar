@@ -101,7 +101,7 @@ class NewMap extends State<Map> {
       estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
     ),
     Area(
-      name: "Zona Coliseum",
+      name: "Coliseum",
       points: [
         LatLng(43.34128260244388, -8.410218651738646),
         LatLng(43.33993269424227, -8.412364418916098),
