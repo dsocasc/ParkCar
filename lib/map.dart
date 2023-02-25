@@ -460,26 +460,31 @@ class NewMap extends State<Map> {
     }
     if (0 < puntos && puntos <= 1) {
       setState(() {
+        a.estado.time = DateTime.now();
         a.estado.value = puntos;
         a.estado.color = Colores.verde;
       });
     } else if (1 < puntos && puntos <= 2) {
       setState(() {
+        a.estado.time = DateTime.now();
         a.estado.value = puntos;
         a.estado.color = Colores.azul;
       });
     } else if (2 < puntos && puntos <= 3) {
       setState(() {
+        a.estado.time = DateTime.now();
         a.estado.value = puntos;
         a.estado.color = Colores.amarillo;
       });
     } else if (3 < puntos && puntos <= 4) {
       setState(() {
+        a.estado.time = DateTime.now();
         a.estado.value = puntos;
         a.estado.color = Colores.granate;
       });
     } else if (4 < puntos && puntos <= 5) {
       setState(() {
+        a.estado.time = DateTime.now();
         a.estado.value = puntos;
         a.estado.color = Colores.rojo;
       });
