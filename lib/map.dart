@@ -44,8 +44,18 @@ class Map extends StatefulWidget {
 
 class NewMap extends State<Map> {
   MapController mapController = MapController();
-  LatLng center = LatLng(43.3713500, -8.3960000);
-  double zoom = 14.5;
+  LatLng center = LatLng(43.33356100440097, -8.409176083298943);
+  double zoom = 13;
+
+  List<Marker> markers = [
+    Marker(
+      width: 50.0,
+      height: 50.0,
+      point: LatLng(43.33299391315873, -8.410923367239457),
+      builder: (ctx) =>
+      const Icon(Icons.location_on, color: Colors.blue, size: 40),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +78,8 @@ class NewMap extends State<Map> {
           center: center,
           zoom: zoom,
         ),
-        nonRotatedChildren: [
+        children: [
+
           PolygonLayer(
             polygonCulling: false,
             polygons: [
@@ -78,36 +89,31 @@ class NewMap extends State<Map> {
                 color: const Color(0x6000FF00),
                 disableHolesBorder: true,
 
+
                 isFilled: true,
                 borderColor: const Color(0xA0000000),
               ),
+
             ],
 
           ),
-        ],
-        children: [
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             userAgentPackageName: 'com.example.app',
           ),
-          ElevatedButton(
-            child: const Text('Go back'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MyApp()),
-              );
-            },
-          ),
+
+          MarkerLayer(
+            markers: markers,
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.gps_fixed),
         onPressed: () {
-          mapController.move(LatLng(43.33299391315873, -8.410923367239457), 17);
+          mapController.move(LatLng(43.33299391315873, -8.410923367239457), 18);
           setState(() {
             center = LatLng(40.7128, -74.0060);
-            zoom = 17;
+            zoom = 18;
           });
         },
       ),
