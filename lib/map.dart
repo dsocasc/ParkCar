@@ -61,14 +61,14 @@ class NewMap extends State<Map> {
 
   var areas = [
     Area(
-      name: "juzgados",
+      name: "Juzgados",
       points: [
         LatLng(43.352013, -8.406989),
         LatLng(43.357186, -8.405929),
         LatLng(43.357519, -8.407758),
         LatLng(43.354900, -8.411033)
       ],
-      estado: Estados(texto: 'NaN', value: 0, color: Colors.grey, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
     ),
     Area(
       name: "cc",
@@ -78,7 +78,77 @@ class NewMap extends State<Map> {
         LatLng(43.351674, -8.403607),
         LatLng(43.355533, -8.401042),
       ],
-      estado: Estados(texto: 'NaN', value: 0, color: Colors.grey, time: DateTime.now()),
+      estado: Estados(texto: 'NaN',value: 0, color: Colores.gris,time: DateTime.now()),
+    ),
+    Area(
+      name: "Universidad",
+      points: [
+        LatLng(43.33293215692912, -8.41229075004498),
+        LatLng(43.335548011418524, -8.415479539477156),
+        LatLng(43.334949075172545, -8.416469763023505),
+        LatLng(43.33460570762639, -8.416519596702322),
+        LatLng(43.332325816451245, -8.41400983926626),
+        LatLng(43.33130996803137, -8.413974728593459),
+        LatLng(43.33029397646857, -8.41356821576917),
+        LatLng(43.33029397646857, -8.412244443238787),
+        LatLng(43.33237130743383, -8.411602032522362),
+        LatLng(43.33285625634265, -8.410164771243146),
+        LatLng(43.33298505357639, -8.40953254292471),
+        LatLng(43.33284147407765, -8.409214357102764),
+        LatLng(43.333440336159484, -8.408183155419103),
+        LatLng(43.33430346144314, -8.409513538949213),
+      ],
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+    ),
+    Area(
+      name: "Zona Coliseum",
+      points: [
+        LatLng(43.34128260244388, -8.410218651738646),
+        LatLng(43.33993269424227, -8.412364418916098),
+        LatLng(43.33971420916805, -8.412300045900777),
+        LatLng(43.33868419751412, -8.41106622977374),
+        LatLng(43.337583938485544, -8.409725125284039),
+        LatLng(43.338333053177244, -8.409038479787252),
+        LatLng(43.33756833183119, -8.407278950701741),
+        LatLng(43.33816138187667, -8.406216795948904),
+        LatLng(43.34028382931498, -8.407321866045292),
+        LatLng(43.340408676861486, -8.40915649698408),
+      ],
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+    ),
+    Area(
+      name: "As lagoas",
+      points: [
+        LatLng(43.38216673259682, -8.409120644473179),
+        LatLng(43.38209512479938, -8.409362481717777),
+        LatLng(43.38130092347766, -8.409120644498072),
+        LatLng(43.380851739427804, -8.408556357645333),
+        LatLng(43.38081267978217, -8.40859218537727),
+        LatLng(43.379732019781734, -8.407597965693817),
+        LatLng(43.3792502735629, -8.407159075919546),
+        LatLng(43.37966040908811, -8.406764970820772),
+        LatLng(43.37998591150295, -8.407096377369022),
+        LatLng(43.380480671827435, -8.407284472984491),
+        LatLng(43.381691515571895, -8.408144338654548),
+      ],
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+    ),
+    Area(
+      name: "Monte Alto",
+      points: [
+        LatLng(43.38005787005131, -8.40651913803735),
+        LatLng(43.378468628610115, -8.407406437020505),
+        LatLng(43.3765338436759, -8.40613886704457),
+        LatLng(43.37595800290549, -8.403286834598717),
+        LatLng(43.374783270777726, -8.40303332060353),
+        LatLng(43.375451258504135, -8.400688316148052),
+        LatLng(43.37694844564461, -8.399198921426327),
+        LatLng(43.37913657573973, -8.398343311692573),
+        LatLng(43.37950509514423, -8.398533447188962),
+        LatLng(43.38169313297744, -8.400181288157677),
+        LatLng(43.38125553172785, -8.404522715325253),
+      ],
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
     ),
   ];
 
@@ -136,7 +206,7 @@ class NewMap extends State<Map> {
                     builder: (context) {
                       return Dialog(
                         child: Container(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           height: MediaQuery.of(context).size.height * 0.3,
                           width: MediaQuery.of(context).size.width * 0.2,
                           decoration: BoxDecoration(
@@ -157,7 +227,7 @@ class NewMap extends State<Map> {
                                         fontSize: 15,
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Align(
                                       alignment: Alignment.center,
                                         child: Row( children: [
@@ -177,7 +247,7 @@ class NewMap extends State<Map> {
                                           ]
                                         ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                   ],
                                 ),
                               ),
@@ -195,7 +265,7 @@ class NewMap extends State<Map> {
                                         size: 30,
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     IconButton(
                                       hoverColor: Colors.blueAccent.withOpacity(0.5),
                                       splashRadius: 15,
@@ -206,7 +276,7 @@ class NewMap extends State<Map> {
                                         size: 30,
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     IconButton(
                                       hoverColor: Colors.yellowAccent.withOpacity(0.5),
                                       onPressed: () => calificacion(3, inside),
