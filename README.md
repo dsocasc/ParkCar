@@ -1,16 +1,17 @@
-# parkcar
+# AppParkCar
 
-A new Flutter project.
+Tired of not knowing where to park...?
+Here are the app you need.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for an app that lets you look for a place to park, developed in flutter.
 
-A few resources to get you started if this is your first Flutter project:
+### Team Members
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* Mencía Tubío Romero
+* Diego Socas Castro
+* Brais Pais Mariño
+* Alba Bueses Suárez
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
