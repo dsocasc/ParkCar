@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -62,7 +63,10 @@ class NewMap extends State<Map> {
               },
             )
         ),
-      body: FlutterMap(
+      body:
+      Stack(
+        children: [
+        FlutterMap(
         mapController: mapController,
         options: MapOptions(
           center: center,
@@ -98,6 +102,48 @@ class NewMap extends State<Map> {
                 MaterialPageRoute(builder: (context) => const MyApp()),
               );
             },
+          ),
+        ],
+      ),
+      const Positioned(
+        top: 0,
+        right: 0,
+        child: Text(
+          'Verde = Libre         ',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.green),
+        ),
+      ),
+          const Positioned(
+            top: 22,
+            right: 0,
+            child: Text(
+              'Azul = Casi vacio     ',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueAccent),
+            ),
+          ),
+          const Positioned(
+            top: 44,
+            right: 0,
+            child: Text(
+              'Amarillo = Medio lleno',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.yellow),
+            ),
+          ),
+          const Positioned(
+            top: 66,
+            right: 0,
+            child: Text(
+              'Morado = Casi lleno   ',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.purple),
+            ),
+          ),
+          const Positioned(
+            top: 88,
+            right: 0,
+            child: Text(
+              'Rojo = Lleno          ',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+            ),
           ),
         ],
       ),
