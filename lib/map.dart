@@ -150,6 +150,24 @@ class NewMap extends State<Map> {
       ],
       estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
     ),
+    Area(
+      name: "B Flores",
+      points: [
+        LatLng(43.347360528171066, -8.40199713891262),
+        LatLng(43.34652095115621, -8.403505707735272),
+        LatLng(43.34626347854502, -8.4038443660424),
+        LatLng(43.34456189296197, -8.405029670117342),
+        LatLng(43.343543157715146, -8.405783954528669),
+        LatLng(43.3429946008859, -8.404921915201436),
+        LatLng(43.342815479215076, -8.40449089553782),
+        LatLng(43.34303938122101, -8.402074106709692),
+        LatLng(43.343352842642034, -8.39999597618869),
+        LatLng(43.344741009479954, -8.399395627371511),
+        LatLng(43.34644259004231, -8.400950376872409),
+        LatLng(43.34692394957256, -8.401458364333099),
+      ],
+      estado: Estados(texto: 'NaN', value: 0, color: Colores.gris, time: DateTime.now()),
+    ),
   ];
 
   Point latLngToPoint(LatLng latlng) {
