@@ -240,7 +240,7 @@ class NewMap extends State<Map> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      DateFormat('yyyy-MM-dd kk:mm').format(inside.estado.time),
+                                      'ult. actualización: ' + DateFormat('yyyy-MM-dd kk:mm').format(inside.estado.time),
                                       style: const TextStyle(
                                         fontSize: 15,
                                       ),
