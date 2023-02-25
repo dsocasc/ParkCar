@@ -40,8 +40,9 @@ class Colores {
 }
 
 class Estados {
-  Estados({required this.texto, required this.color, required this.time});
+  Estados({required this.texto, required this.value, required this.color, required this.time});
   final String texto;
+  double value;
   Color color;
   DateTime time;
 }
@@ -58,13 +59,6 @@ class NewMap extends State<Map> {
   LatLng center = LatLng(43.33356100440097, -8.409176083298943);
   double zoom = 13;
 
-  Estados completo = Estados(texto: 'Completo', color: Colores.rojo, time: DateTime.now());
-  Estados pseudocompleto = Estados(texto: 'Casi lleno', color: Colores.granate, time: DateTime.now());
-  Estados medio = Estados(texto: 'Medio lleno', color: Colores.amarillo, time: DateTime.now());
-  Estados pseudovacio = Estados(texto: 'Casi vacío', color: Colores.azul, time: DateTime.now());
-  Estados vacio = Estados(texto: 'Vacío', color: Colores.verde, time: DateTime.now());
-  Estados sininfo = Estados(texto: 'NaN', color: Colores.gris, time: DateTime.now());
-
   var areas = [
     Area(
       name: "juzgados",
@@ -74,7 +68,7 @@ class NewMap extends State<Map> {
         LatLng(43.357519, -8.407758),
         LatLng(43.354900, -8.411033)
       ],
-      estado: Estados(texto: 'NaN', color: Colores.gris, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colors.grey, time: DateTime.now()),
     ),
     Area(
       name: "cc",
@@ -84,7 +78,7 @@ class NewMap extends State<Map> {
         LatLng(43.351674, -8.403607),
         LatLng(43.355533, -8.401042),
       ],
-      estado: Estados(texto: 'NaN', color: Colores.gris, time: DateTime.now()),
+      estado: Estados(texto: 'NaN', value: 0, color: Colors.grey, time: DateTime.now()),
     ),
   ];
 
@@ -96,7 +90,6 @@ class NewMap extends State<Map> {
     for (var area in areas) {
       if (Poly.isPointInPolygon(latLngToPoint(point),
           area.points.map((p) => latLngToPoint(p)).toList())) {
-        area.estado.time = DateTime.now();
         return area;
       }
     }
@@ -349,25 +342,42 @@ class NewMap extends State<Map> {
     );
   }
 
+  bool onlyNewAdd(Area area){
+    // Solo evalua los datos de menos de hace un minuto
+    DateTime viejo = area.estado.time.add(const Duration(minutes: 1));
+    if (DateTime.now().compareTo(viejo) <= 0 && area.estado.value != 0){
+      return false;
+    }
+    return true;
+  }
+
   void calificacion(double puntos, Area a) {
+    if (!onlyNewAdd(a)){
+      puntos = (puntos + a.estado.value)/2;
+    }
     if (0 < puntos && puntos <= 1) {
       setState(() {
+        a.estado.value = puntos;
         a.estado.color = Colores.verde;
       });
     } else if (1 < puntos && puntos <= 2) {
       setState(() {
+        a.estado.value = puntos;
         a.estado.color = Colores.azul;
       });
     } else if (2 < puntos && puntos <= 3) {
       setState(() {
+        a.estado.value = puntos;
         a.estado.color = Colores.amarillo;
       });
     } else if (3 < puntos && puntos <= 4) {
       setState(() {
+        a.estado.value = puntos;
         a.estado.color = Colores.granate;
       });
     } else if (4 < puntos && puntos <= 5) {
       setState(() {
+        a.estado.value = puntos;
         a.estado.color = Colores.rojo;
       });
     }
