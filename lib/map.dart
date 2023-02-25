@@ -385,46 +385,87 @@ class NewMap extends State<Map> {
             top: 0,
             right: 0,
             child: Container(
-            width: 200,
+            width: 150,
             height: 120,
             alignment: AlignmentDirectional.topEnd,
             color: Colors.white.withOpacity(0.8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: const [
+              children:  [
+                Row(
+                  children: const [
+                    Icon(
+                  Icons.where_to_vote,
+                  color: Colors.green,
+                ),
+
                 Text(
-                    'Verde = Libre         ',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green),
-                  ),
-               Text(
-                    'Azul = Casi vacio     ',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueAccent),
-                  ),
-                Text(
-                    'Amarillo = Medio lleno',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.yellow),
-                  ),
-                Text(
-                    'Morado = Casi lleno   ',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.purple),
-                  ),
-                Text(
-                    'Rojo = Lleno          ',
-                    style: TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
-                  ),
+                  ' Libre         ',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black54),
+                ),
+                  ],
+                ),
+               Row(
+                 children: const [
+                   Icon(
+                     Icons.where_to_vote,
+                     color: Colors.blueAccent,
+                   ),
+                   Text(
+                   ' Casi vacio     ',
+                   style: TextStyle(
+                       fontSize: 20,
+                       fontWeight: FontWeight.bold,
+                       color: Colors.black54),
+                 ),
+               ]
+               ),
+               Row(
+                 children: const[
+                   Icon(
+                     Icons.where_to_vote,
+                     color: Colors.yellow,
+                   ),
+                   Text(
+                     ' Medio lleno',
+                     style: TextStyle(
+                         fontSize: 20,
+                         fontWeight: FontWeight.bold,
+                         color: Colors.black54),
+                   ),
+                 ],
+               ),
+                Row(
+                  children: const[
+                    Icon(
+                      Icons.where_to_vote,
+                      color: Colors.purple,
+                    ),
+                    Text(
+                      ' Casi lleno   ',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black54),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: const[
+                    Icon(
+                      Icons.where_to_vote,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      ' Lleno          ',
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black54),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
