@@ -30,23 +30,22 @@ class Map extends StatefulWidget {
 }
 
 class Colores {
-  static final Color gris = Colors.grey;
-  static final Color rojo = Colors.red;
-  static final Color granate = Colors.purple;
-  static final Color amarillo = Colors.yellow;
-  static final Color azul = Colors.blueAccent;
-  static final Color verde = Colors.green;
+  static final Color gris = Colors.grey.withOpacity(0.5);
+  static final Color rojo = Colors.red.withOpacity(0.5);
+  static final Color granate = Colors.purple.withOpacity(0.5);
+  static final Color amarillo = Colors.yellow.withOpacity(0.5);
+  static final Color azul = Colors.blueAccent.withOpacity(0.5);
+  static final Color verde = Colors.green.withOpacity(0.5);
 }
 
 class Estados {
-  const Estados({required this.texto, required this.color});
+  Estados({required this.texto, required this.color});
   final String texto;
-  final Color color;
+  Color color;
 }
 
 class Area {
-  const Area({required this.name, required this.points,
-    required this.estado});
+  const Area({required this.name, required this.points, required this.estado});
   final String name;
   final List<LatLng> points;
   final Estados estado;
@@ -65,23 +64,27 @@ class NewMap extends State<Map> {
   Estados sininfo = Estados(texto: 'NaN', color: Colores.gris);
 
   var areas = [
-    Area(name: "juzgados", points: [
-      LatLng(43.352013, -8.406989),
-      LatLng(43.357186, -8.405929),
-      LatLng(43.357519, -8.407758),
-      LatLng(43.354900, -8.411033)],
-      estado: sininfo,
+    Area(
+      name: "juzgados",
+      points: [
+        LatLng(43.352013, -8.406989),
+        LatLng(43.357186, -8.405929),
+        LatLng(43.357519, -8.407758),
+        LatLng(43.354900, -8.411033)
+      ],
+      estado: Estados(texto: 'NaN', color: Colores.gris),
     ),
-    Area(name: "cc", points: [
-      LatLng(43.358008, -8.405575),
-      LatLng(43.351803, -8.406835),
-      LatLng(43.351674, -8.403607),
-      LatLng(43.355533, -8.401042),],
-      estado: sininfo,
+    Area(
+      name: "cc",
+      points: [
+        LatLng(43.358008, -8.405575),
+        LatLng(43.351803, -8.406835),
+        LatLng(43.351674, -8.403607),
+        LatLng(43.355533, -8.401042),
+      ],
+      estado: Estados(texto: 'NaN', color: Colores.gris),
     ),
   ];
-
-
 
   Point latLngToPoint(LatLng latlng) {
     return Point(x: latlng.latitude, y: latlng.longitude);
@@ -141,13 +144,64 @@ class NewMap extends State<Map> {
                           width: MediaQuery.of(context).size.width * 0.2,
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Colors.blue,
+                              color: inside.estado.color,
                               width: 8,
                             ),
                           ),
                           child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(inside.name),
+                            alignment: Alignment.topCenter,
+                            child: Column(children: [
+                              const Text(
+                                'Area: ',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                inside.name,
+                                style: const TextStyle(
+                                    fontSize: 30,
+
+                                ),
+                              ),
+
+                                Row(
+                                  children: [
+                                    IconButton(
+                                        onPressed:() => calificacion(1, inside),
+                                        icon: const Icon(
+                                          Icons.car_repair_outlined,
+                                          color:Colors.green,
+                                        )),
+                                    IconButton(
+                                        onPressed:() => calificacion(2, inside),
+                                        icon: const Icon(
+                                          Icons.car_repair_outlined,
+                                          color: Colors.blueAccent,
+                                        )),
+                                    IconButton(
+                                        onPressed:() => calificacion(3, inside),
+                                        icon: const Icon(
+                                          Icons.car_repair_outlined,
+                                          color: Colors.yellow,
+                                        )),
+                                    IconButton(
+                                        onPressed:() => calificacion(4, inside),
+                                        icon: const Icon(
+                                          Icons.car_repair_outlined,
+                                          color: Colors.purple,
+                                        )),
+                                    IconButton(
+                                        onPressed:() => calificacion(5, inside),
+                                        icon: const Icon(
+                                          Icons.car_repair_outlined,
+                                          color: Colors.red,
+
+                                        )),
+                                  ],
+                                )
+                            ]),
                           ),
                         ),
                       );
@@ -163,10 +217,10 @@ class NewMap extends State<Map> {
                         Polygon(
                           points: a.points,
                           borderStrokeWidth: 2,
-                          color: const Color(0x6000FF00),
+                          color: a.estado.color,
                           disableHolesBorder: true,
                           isFilled: true,
-                          borderColor: const Color(0xA0000000),
+                          borderColor: const Color(0xA0000000).withOpacity(0.5),
                         ),
                       ],
                     ))
@@ -249,4 +303,30 @@ class NewMap extends State<Map> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
+
+  void calificacion(double puntos, Area a){
+    if(0 < puntos && puntos <= 1){
+      setState(() {
+        a.estado.color = Colores.verde;
+      });
+    } else if(1 < puntos && puntos <= 2){
+      setState(() {
+        a.estado.color = Colores.azul;
+      });
+    } else if(2 < puntos && puntos <= 3){
+      setState(() {
+        a.estado.color = Colores.amarillo;
+      });
+    } else if(3 < puntos && puntos <= 4){
+      setState(() {
+        a.estado.color = Colores.granate;
+      });
+    } else if(4 < puntos && puntos <= 5){
+      setState(() {
+        a.estado.color = Colores.rojo;
+      });
+    }
+
+  }
+
 }
