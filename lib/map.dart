@@ -276,7 +276,10 @@ class NewMap extends State<Map> {
                                     IconButton(
                                       hoverColor: Colors.green.withOpacity(0.5),
                                       splashRadius: 15,
-                                      onPressed: () => calificacion(1, inside),
+                                      onPressed: () {
+                                          calificacion(1, inside);
+                                          Navigator.pop(context);
+                                      },
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
                                         color: Colors.green,
@@ -287,7 +290,10 @@ class NewMap extends State<Map> {
                                     IconButton(
                                       hoverColor: Colors.blueAccent.withOpacity(0.5),
                                       splashRadius: 15,
-                                      onPressed: () => calificacion(2, inside),
+                                      onPressed: () {
+                                        calificacion(2, inside);
+                                        Navigator.pop(context);
+                                      },
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
                                         color: Colors.blueAccent,
@@ -297,7 +303,10 @@ class NewMap extends State<Map> {
                                     const Spacer(),
                                     IconButton(
                                       hoverColor: Colors.yellowAccent.withOpacity(0.5),
-                                      onPressed: () => calificacion(3, inside),
+                                      onPressed: () {
+                                        calificacion(3, inside);
+                                        Navigator.pop(context);
+                                      },
                                       splashRadius: 15,
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
@@ -308,7 +317,10 @@ class NewMap extends State<Map> {
                                     Spacer(),
                                     IconButton(
                                       hoverColor: Colors.purple.withOpacity(0.5),
-                                      onPressed: () => calificacion(4, inside),
+                                      onPressed: () {
+                                        calificacion(4, inside);
+                                        Navigator.pop(context);
+                                      },
                                       splashRadius: 15,
                                       icon: const Icon(
                                         Icons.car_repair_outlined,
@@ -318,7 +330,10 @@ class NewMap extends State<Map> {
                                     ),
                                     Spacer(),
                                     IconButton(
-                                      onPressed: () => calificacion(5, inside),
+                                      onPressed: () {
+                                        calificacion(5, inside);
+                                        Navigator.pop(context);
+                                      },
                                       hoverColor: Colors.red.withOpacity(0.5),
                                       splashRadius: 15,
                                       icon: const Icon(
