@@ -29,10 +29,27 @@ class Map extends StatefulWidget {
   State<StatefulWidget> createState() => NewMap();
 }
 
+class Colores {
+  static final Color gris = Colors.grey;
+  static final Color rojo = Colors.red;
+  static final Color granate = Colors.purple;
+  static final Color amarillo = Colors.yellow;
+  static final Color azul = Colors.blueAccent;
+  static final Color verde = Colors.green;
+}
+
+class Estados {
+  const Estados({required this.texto, required this.color});
+  final String texto;
+  final Color color;
+}
+
 class Area {
-  const Area({required this.name, required this.points});
+  const Area({required this.name, required this.points,
+    required this.estado});
   final String name;
   final List<LatLng> points;
+  final Estados estado;
 }
 
 class NewMap extends State<Map> {
@@ -40,20 +57,31 @@ class NewMap extends State<Map> {
   LatLng center = LatLng(43.33356100440097, -8.409176083298943);
   double zoom = 13;
 
+  Estados completo = Estados(texto: 'Completo', color: Colores.rojo);
+  Estados pseudocompleto = Estados(texto: 'Casi lleno', color: Colores.granate);
+  Estados medio = Estados(texto: 'Medio lleno', color: Colores.amarillo);
+  Estados pseudovacio = Estados(texto: 'Casi vacío', color: Colores.azul);
+  Estados vacio = Estados(texto: 'Vacío', color: Colores.verde);
+  Estados sininfo = Estados(texto: 'NaN', color: Colores.gris);
+
   var areas = [
     Area(name: "juzgados", points: [
       LatLng(43.352013, -8.406989),
       LatLng(43.357186, -8.405929),
       LatLng(43.357519, -8.407758),
-      LatLng(43.354900, -8.411033)
-    ]),
+      LatLng(43.354900, -8.411033)],
+      estado: sininfo,
+    ),
     Area(name: "cc", points: [
       LatLng(43.358008, -8.405575),
       LatLng(43.351803, -8.406835),
       LatLng(43.351674, -8.403607),
-      LatLng(43.355533, -8.401042)
-    ]),
+      LatLng(43.355533, -8.401042),],
+      estado: sininfo,
+    ),
   ];
+
+
 
   Point latLngToPoint(LatLng latlng) {
     return Point(x: latlng.latitude, y: latlng.longitude);
