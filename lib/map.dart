@@ -148,60 +148,85 @@ class NewMap extends State<Map> {
                               width: 8,
                             ),
                           ),
-                          child: Align(
-                            alignment: Alignment.topCenter,
-                            child: Column(children: [
-                              const Text(
-                                'Area: ',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Spacer(),
+                                    const Text(
+                                      'Area: ',
+                                      style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      inside.name,
+                                      style: const TextStyle(
+                                        fontSize: 30,
+                                      ),
+                                    ),
+                                    Spacer(),
+                                  ],
                                 ),
                               ),
-                              Text(
-                                inside.name,
-                                style: const TextStyle(
-                                    fontSize: 30,
-
-                                ),
-                              ),
-
-                                Row(
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     IconButton(
-                                        onPressed:() => calificacion(1, inside),
-                                        icon: const Icon(
-                                          Icons.car_repair_outlined,
-                                          color:Colors.green,
-                                        )),
+                                      onPressed: () => calificacion(1, inside),
+                                      icon: const Icon(
+                                        Icons.car_repair_outlined,
+                                        color: Colors.green,
+                                        size: 30,
+                                      ),
+                                    ),
+                                    Spacer(),
                                     IconButton(
-                                        onPressed:() => calificacion(2, inside),
-                                        icon: const Icon(
-                                          Icons.car_repair_outlined,
-                                          color: Colors.blueAccent,
-                                        )),
+                                      onPressed: () => calificacion(2, inside),
+                                      icon: const Icon(
+                                        Icons.car_repair_outlined,
+                                        color: Colors.blueAccent,
+                                        size: 30,
+                                      ),
+                                    ),
+                                    Spacer(),
                                     IconButton(
-                                        onPressed:() => calificacion(3, inside),
-                                        icon: const Icon(
-                                          Icons.car_repair_outlined,
-                                          color: Colors.yellow,
-                                        )),
+                                      onPressed: () => calificacion(3, inside),
+                                      icon: const Icon(
+                                        Icons.car_repair_outlined,
+                                        color: Colors.yellow,
+                                        size: 30,
+                                      ),
+                                    ),
+                                    Spacer(),
                                     IconButton(
-                                        onPressed:() => calificacion(4, inside),
-                                        icon: const Icon(
-                                          Icons.car_repair_outlined,
-                                          color: Colors.purple,
-                                        )),
+                                      onPressed: () => calificacion(4, inside),
+                                      icon: const Icon(
+                                        Icons.car_repair_outlined,
+                                        color: Colors.purple,
+                                        size: 30,
+                                      ),
+                                    ),
+                                    Spacer(),
                                     IconButton(
-                                        onPressed:() => calificacion(5, inside),
-                                        icon: const Icon(
-                                          Icons.car_repair_outlined,
-                                          color: Colors.red,
-
-                                        )),
+                                      onPressed: () => calificacion(5, inside),
+                                      icon: const Icon(
+                                        Icons.car_repair_outlined,
+                                        color: Colors.red,
+                                        size: 30,
+                                        opticalSize: 50,
+                                      ),
+                                    ),
+                                    Spacer(),
                                   ],
-                                )
-                            ]),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       );
@@ -304,29 +329,27 @@ class NewMap extends State<Map> {
     );
   }
 
-  void calificacion(double puntos, Area a){
-    if(0 < puntos && puntos <= 1){
+  void calificacion(double puntos, Area a) {
+    if (0 < puntos && puntos <= 1) {
       setState(() {
         a.estado.color = Colores.verde;
       });
-    } else if(1 < puntos && puntos <= 2){
+    } else if (1 < puntos && puntos <= 2) {
       setState(() {
         a.estado.color = Colores.azul;
       });
-    } else if(2 < puntos && puntos <= 3){
+    } else if (2 < puntos && puntos <= 3) {
       setState(() {
         a.estado.color = Colores.amarillo;
       });
-    } else if(3 < puntos && puntos <= 4){
+    } else if (3 < puntos && puntos <= 4) {
       setState(() {
         a.estado.color = Colores.granate;
       });
-    } else if(4 < puntos && puntos <= 5){
+    } else if (4 < puntos && puntos <= 5) {
       setState(() {
         a.estado.color = Colores.rojo;
       });
     }
-
   }
-
 }
